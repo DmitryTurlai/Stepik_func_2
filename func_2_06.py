@@ -12,8 +12,3 @@ if not language(n, word_list):
 else:
     sorted_word_list = sorted(language(n, word_list))
     print(*sorted_word_list, sep=", ")
-
-
-
-
-
