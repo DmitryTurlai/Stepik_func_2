@@ -1,15 +1,24 @@
 import re
 
+# mails = ['anri-tabuev1', 'arthur-kharisov3']
+# n=2
+#
+# new_personal = ['anri-tabuev', 'anri-tabuev', 'arthur-kharisov', 'arthur-kharisov',
+#                 'arthur-kharisov', 'arthur-kharisov', 'arthur-kharisov', 'arthur-kharisov',
+#                 'arthur-kharisov', 'arthur-kharisov', 'arthur-kharisov', 'arthur-kharisov',
+#                 'arthur-kharisov', 'arthur-kharisov', 'arthur-kharisov']
+# m=15
+# res = []
+
 mails = []
 n = int(input())
 for i in range(n):
     mails.append(input().split('@')[0])
 new_personal = []
 m = int(input())
-res = []
 for i in range(m):
     new_personal.append(input())
-
+res = []
 def split_string_and_extract_number(string):
     # Используем регулярное выражение для разделения строки на текстовую часть и число
     pattern = r"(\D+)(\d+)"
@@ -23,19 +32,18 @@ def split_string_and_extract_number(string):
 
 for i in range(n):
     text, number = split_string_and_extract_number(mails[i])
-
-for i in range(m):
-    for j in range(n):
-        count = 0
-        if new_personal[i] == mails[j] or new_personal[i].startswith(mails[j]):
+    count = 0
+    for j in range(m):
+        if text == new_personal[j]:
             count += 1
-        elif new_personal[i] != mails[j] and new_personal[i].startswith(mails[j]):
-            if mails[j][-1] != 1:
+            if count == 1 and number != None:
+                res.append(new_personal[j] + str(count))
+            else:
+                if count != number:
+                    res.append(new_personal[j] + str(count))
+                elif count == number:
+                    res.append(new_personal[j] + str(count+1))
+                    count += 1
 
-    if count == 0:
-        res.append(new_personal[i] + '@beegeek.bzz')
-    elif count > 0:
-
-#    mails.append(new_personal[i])
 for i in range(m):
-    print(res[i])
+    print(res[i] + '@beegeek.bzz')
