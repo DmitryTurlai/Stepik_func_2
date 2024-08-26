@@ -28,14 +28,34 @@ def split_string_and_extract_number(string):
     else:
         return string, 0
 
-def chek_number(n, mas_num):
-    for i in range(1, n + 2):
+def chek_number(m, mas_num):
+    for i in range(1, m + 2):
         if i not in mas_num:
             return i
 
+slov_num = {}
+for i in range(n):
+    text, number = split_string_and_extract_number(mails[i])
+    if text in slov_num:
+        slov_num[text].extend([number])
+    else:
+        slov_num[text] = [number]
+    print(slov_num)
+
+
+
+
+
 mas_num = []
 for i in range(m):
-    new_personal[i]
+    name = new_personal[i]
+    for j in range(n):
+        text, number = split_string_and_extract_number(mails[j])
+        if name == text:
+            mas_num.append(number)
+    num = chek_number(m, mas_num)
+    new_personal[i] = new_personal[i] + str(num)
+    mas_num.append(num)
 
 #for i in range(m):
 #    print(res[i] + '@beegeek.bzz')
